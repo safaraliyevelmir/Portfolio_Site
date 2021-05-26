@@ -1,0 +1,188 @@
+{% extends 'layout.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link rel="stylesheet" href="{% static 'css/resume.css' %}">
+{% endblock links %}
+
+
+{% block content %}
+<!-- Content Start -->
+<main>
+    <div class="content">
+        <section id="resume">
+            <div class="blog resume-div" style="color: white;">
+                <div class="skills">
+                    <div class="title">
+                        <h1>MY SKILLS</h1>
+                        <span>MY SKILLS</span>
+                    </div>
+                    <div class="skill-container">
+                        {% for skill in skills  %}
+                        <div class="skill-box">
+                            <h5>{{skill.title}}</h5>
+                            <div class="skill-inner">
+                                <span>{{skill.per}}%</span>
+                                <div class="skill-per">
+                                    <div class="per" style="width: {{skill.per}}%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- <div class="skill-box">
+                            <h5>HTML5</h5>
+                            <div class="skill-inner">
+                                <span>95%</span>
+                                <div class="skill-per">
+                                    <div class="per"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-box">
+                            <h5>HTML5</h5>
+                            <div class="skill-inner">
+                                <span>95%</span>
+                                <div class="skill-per">
+                                    <div class="per"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-box">
+                            <h5>HTML5</h5>
+                            <div class="skill-inner">
+                                <span>95%</span>
+                                <div class="skill-per">
+                                    <div class="per"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-box">
+                            <h5>HTML5</h5>
+                            <div class="skill-inner">
+                                <span>95%</span>
+                                <div class="skill-per">
+                                    <div class="per"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-box">
+                            <h5>HTML5</h5>
+                            <div class="skill-inner">
+                                <span>95%</span>
+                                <div class="skill-per">
+                                    <div class="per"></div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="resume">
+                    <div class="title">
+                        <h1>RESUME</h1>
+                        <span>RESUME</span>
+                    </div>
+
+                    <div class="resume-container">
+                        <div class="resume-title">
+                            <span>
+                                <i class="fas fa-briefcase"></i>
+                            </span>
+                            <h1>Working Experience</h1>
+                        </div>
+
+                        <div class="resume-inner">
+                            {% for work in work %}
+                            <div class="work">
+                                <div class="date">{{work.startdate}} - {{work.enddate}}</div>
+                                <div class="info">
+                                    <h5>{{work.name}}</h5>
+                                    <p class="place">{{work.place}}</p>
+                                    <p class="text">{{work.text}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- <div class="work">
+                                <div class="date">2018 - Present</div>
+                                <div class="info">
+                                    <h5>Frontend Web Developer</h5>
+                                    <p class="place">Abc Company</p>
+                                    <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas,
+                                        magni mollitia, aspernatur consequatur accusamus vero eum facere exercitationem
+                                        velit suscipit ipsam placeat libero. Deleniti exercitationem nostrum quasi.
+                                        Molestiae, vel porro.</p>
+
+                                </div>
+                            </div>
+                            <div class="work">
+                                <div class="date">2018 - Present</div>
+                                <div class="info">
+                                    <h5>Frontend Web Developer</h5>
+                                    <p class="place">Abc Company</p>
+                                    <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas,
+                                        magni mollitia, aspernatur consequatur accusamus vero eum facere exercitationem
+                                        velit suscipit ipsam placeat libero. Deleniti exercitationem nostrum quasi.
+                                        Molestiae, vel porro.</p>
+
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="resume">
+                    <div class="resume-container">
+                        <div class="resume-title">
+                            <span>
+                                <i class="fas fa-user-graduate"></i>
+                            </span>
+                            <h1>Education Experience</h1>
+                        </div>
+
+                        <div class="resume-inner">
+                            {% for edu in edu %}
+                            <div class="work">
+                                <div class="date">{{edu.startdate}} - {{edu.enddate}}</div>
+                                <div class="info">
+                                    <h5>{{edu.name}}</h5>
+                                    <p class="place">{{edu.place}}</p>
+                                    <p class="text">{{edu.text}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- <div class="work">
+                                <div class="date">2018 - Present</div>
+                                <div class="info">
+                                    <h5>Frontend Web Developer</h5>
+                                    <p class="place">Abc Company</p>
+                                    <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas,
+                                        magni mollitia, aspernatur consequatur accusamus vero eum facere exercitationem
+                                        velit suscipit ipsam placeat libero. Deleniti exercitationem nostrum quasi.
+                                        Molestiae, vel porro.</p>
+
+                                </div>
+                            </div>
+                            <div class="work">
+                                <div class="date">2018 - Present</div>
+                                <div class="info">
+                                    <h5>Frontend Web Developer</h5>
+                                    <p class="place">Abc Company</p>
+                                    <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas,
+                                        magni mollitia, aspernatur consequatur accusamus vero eum facere exercitationem
+                                        velit suscipit ipsam placeat libero. Deleniti exercitationem nostrum quasi.
+                                        Molestiae, vel porro.</p>
+
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!-- Content End -->
+{% endblock content %}

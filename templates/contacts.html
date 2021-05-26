@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock links %}
+
+
+{% block content %}
+<!-- Content Start -->
+<main>
+    <div class="content">
+        <section id="contact">
+            <div class="contact">
+                <div class="title">
+                    <h1>CONTACT ME</h1>
+                    <span>CONTACT ME</span>
+                </div>
+
+                <div class="contact-content">
+
+                    <div class="form">
+                        <div class="form-title">Get In Touch</div>
+                        <form method="POST">
+                            <div class="form-input">
+                                <label for="">Enter your name*</label>
+                                <input type="text">
+                            </div>
+                            <div class="form-input">
+                                <label for="">Enter your email*</label>
+                                <input type="email">
+                            </div>
+                            <div class="form-input">
+                                <label for="">Enter your subject*</label>
+                                <input type="text">
+                            </div>
+                            <div class="form-input">
+                                <label for="">Enter your message*</label>
+                                <textarea name="" id="" cols="30" rows="6"></textarea>
+                            </div>
+
+                            <div class="form-input">
+                                <button type="submit">SEND MAIL</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="info">
+                        <div class="info-box">
+                            <div class="icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="text">
+                                <h5>Phone</h5>
+                                <span>+994 55 231 26 06</span>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <div class="icon"><i class="far fa-envelope"></i></div>
+                            <div class="text">
+                                <h5>Phone</h5>
+                                <span>+994 55 231 26 06</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!-- Content End -->
+{% endblock content %}
