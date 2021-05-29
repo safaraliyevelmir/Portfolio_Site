@@ -1,3 +1,4 @@
+from datetime import date
 from typing import NewType
 from django.http import request
 from django.shortcuts import redirect, render
@@ -18,24 +19,21 @@ def blog(request):
 
 def single_blog(request, slug):
     blogs = Blog.objects.get(slug=slug)
-    form = Comment_Add(request.POST)
-    print("Postun idsi: ",blogs.slug)
+    new_comment = None
     if request.method == 'POST':
-        if form.is_valid():
-            name = form.cleaned_data.get('name')
-            email = form.cleaned_data.get('email')
-            message = form.cleaned_data.get('message')
-
-            comment = Comment(name=name,email=email, message=message)
-            comment.save()
+        comment_form = Comment_Add(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = blog
+            new_comment.save()
             return redirect('blog')
     
-    form = Comment_Add()
+    comment_form = Comment_Add()
 
     context = {
         'blog_page': 'active',
         'blogs':blogs,
-        'form':form
+        'form': comment_form
     }
     return render(request,'singleblog.html',context)    
 
