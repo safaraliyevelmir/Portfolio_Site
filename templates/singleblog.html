@@ -35,7 +35,7 @@
 
                     <div class="comment">
                         <div class="info">
-                            <div class="comment-count">{{comments|length}}</div>
+                            <div class="comment-count">{{blogs.post_comment.all|length}}</div>
                         </div>
 
                         <div class="write_comment">
@@ -46,17 +46,17 @@
                                 {% csrf_token %}
                                 <div class="name_surname">
                                     <div class="name">
-                                        {{forms.name}}
+                                        {{form.name}}
                                         <!-- <input type="text" placeholder="Fullname"> -->
                                     </div>
                                     <div class="email">
-                                        {{forms.email}}
+                                        {{form.email}}
                                         <!-- <input type="text" placeholder="Email"> -->
                                     </div>
                                 </div>
                                 <div class="textarea">
                                     <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
-                                    {{forms.comment}}
+                                    {{form.comment}}
                                 </div>
                                 <div class="submit">
                                     <button>SEND</button>

@@ -23,22 +23,26 @@
 
                     <div class="form">
                         <div class="form-title">Get In Touch</div>
-                        <form method="POST">
+                        <form method="POST">{% csrf_token %}
                             <div class="form-input">
                                 <label for="">Enter your name*</label>
-                                <input type="text">
+                                <!-- <input type="text"> -->
+                                {{form.name}}
                             </div>
                             <div class="form-input">
                                 <label for="">Enter your email*</label>
-                                <input type="email">
+                                {{form.email}}
+                                <!-- <input type="email"> -->
                             </div>
                             <div class="form-input">
                                 <label for="">Enter your subject*</label>
-                                <input type="text">
+                                <!-- <input type="text"> -->
+                                {{form.subject}}
                             </div>
                             <div class="form-input">
                                 <label for="">Enter your message*</label>
-                                <textarea name="" id="" cols="30" rows="6"></textarea>
+                                <!-- <textarea name="" id="" cols="30" rows="6"></textarea> -->
+                                {{form.message}}
                             </div>
 
                             <div class="form-input">

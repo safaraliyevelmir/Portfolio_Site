@@ -1,3 +1,4 @@
+from typing import NewType
 from django.http import request
 from django.shortcuts import redirect, render
 
@@ -16,23 +17,26 @@ def blog(request):
     return render(request,'blog.html', context)
 
 def single_blog(request, slug):
-    forms = Comment_Add(request.POST or None)
-    if forms.is_valid():
-        name =  forms.cleaned_data.get('name')
-        email = forms.cleaned_data.get('email')
-        message = forms.cleaned_data.get('message')
-
-        message = Comment(name=name, email=email, message=message)
-
-        message.save()
-        return redirect('blog')
-
     blogs = Blog.objects.get(slug=slug)
+    form = Comment_Add(request.POST)
+    print("Postun idsi: ",blogs.slug)
+    if request.method == 'POST':
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            message = form.cleaned_data.get('message')
+
+            comment = Comment(name=name,email=email, message=message)
+            comment.save()
+            return redirect('blog')
     
+    form = Comment_Add()
+
     context = {
         'blog_page': 'active',
         'blogs':blogs,
-        'forms':forms
+        'form':form
     }
     return render(request,'singleblog.html',context)    
-                                                    
+
+

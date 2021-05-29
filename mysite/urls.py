@@ -37,7 +37,7 @@ urlpatterns = [
     path('about/',aboutme, name='about'),
     path('contact/', contact, name='contact'),
     path('portfolio/', portfolio, name='portfolio'),
-    path('singleblog/<slug>/',single_blog, name='single_blog')
+    path('singleblog/<slug>/',single_blog, name='single_blog'),
 ]
 
 if settings.DEBUG:
