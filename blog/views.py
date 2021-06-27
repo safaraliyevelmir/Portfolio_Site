@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from .models import Blog, Comment
 from .forms import CommentForms
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 # Create your views here.
 
@@ -33,7 +34,7 @@ def single_blog(request, slug):
             form = Comment(name=name,email=email,message=comment, post_id=post_id)
             form.save()
             print(slug)
-            return redirect('singleblog:slug')
+            return redirect(reverse('single_blog'))
         
         else:
             form = CommentForms()
