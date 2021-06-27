@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<link rel="stylesheet" href="{% static 'css/snigleblog.css' %}">
+{% endblock links %}
+
+{% block content %}
+<!-- Content Start -->
+<main>
+    <div class="content">
+        <section id="contact">
+            <div class="contact">
+                <div class="blog_img">
+                    <img src="{{portfolio.img.url}}" alt="">
+                </div>
+
+                <div class="blog_inner">
+
+                    <h1 class="blog_title">{{portfolio.title}}</h1>
+
+                    <div class="blog_content">
+                        <p>{{portfolio.text|safe}}</p>
+
+                        <blockquote>
+                            Inventore tempora deleniti repellendus doloribus necessitatibus ullam accusantium
+                            iste natus assumenda nisi ut eius commodi quis tenetur fugit consequatur earum
+                            debitis mollitia repellat.
+                        </blockquote>
+                    </div>
+
+
+                    <div class="comment">
+                        <div class="info">
+                            <div class="comment-count">{{blogs.post_comment.all|length}}</div>
+                        </div>
+
+                        <div class="write_comment">
+                            <div class="img">
+                                <img src="{% static 'img/noavatar92.png' %}" alt="">
+                            </div>
+                            <form class="w_comment" action="" method="POST">
+                                {% csrf_token %}
+                                <div class="name_surname">
+                                    <div class="name">
+                                        {{form.name}}
+                                        <!-- <input type="text" placeholder="Fullname"> -->
+                                    </div>
+                                    <div class="email">
+                                        {{form.email}}
+                                        <!-- <input type="text" placeholder="Email"> -->
+                                    </div>
+                                </div>
+                                <div class="textarea">
+                                    <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+                                    {{form.comment}}
+                                </div>
+                                <div class="submit">
+                                    <button>SEND</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="comments">
+                            {% for x in blogs.post_comment.all %}
+                            <div class="comment-a">
+                                <div class="img">
+                                    <img src="{% static 'img/noavatar92.png' %}" alt="">
+                                </div>
+                                <div class="comment_inner">
+                                    <div class="commenter-info">
+                                        <div class="commenter">{{x.name}}</div>
+                                        <div class="date">{{x.datetime}}</div>
+                                    </div>
+                                    <p>{{x.message}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</main>
+<!-- Content End -->
+{% endblock content %}

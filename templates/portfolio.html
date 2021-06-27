@@ -20,95 +20,54 @@
                 </div>
 
                 <div class="portfolio-container">
+                    {% for portfolio in page_obj %}
                     <div class="portfolio-box">
-                        <div class="img">
-                            <img src="{% static 'img/portfolio-image-1.jpg' %}" alt="">
-                            <div class="icons">
-                                <i class="bi bi-zoom-in"></i>
-                                <i class="bi bi-link-45deg"></i>
+                        <a href="{{portfolio.get_absolute_url}}">
+                            <div class="img">
+                                <img src="{{portfolio.img.url}}" alt="">
+                                <div class="icons">
+                                    <a href="{{portfolio.get_absolute_url}}" style="color: white;"><i class="bi bi-zoom-in"></i></a>
+                                    <a href="{{portfolio.githiblink}}" style="color:white"><i
+                                            class="bi bi-link-45deg"></i></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="p-title">
-                            <a href="">
-                                <h1>T-Shirt Mocukup</h1>
-                            </a>
-                            <p>A beatiful t-shirt backup</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-box">
-                        <div class="img">
-                            <img src="{% static 'img/portfolio-image-1.jpg' %}" alt="">
-                            <div class="icons">
-                                <i class="bi bi-zoom-in"></i>
-                                <i class="bi bi-link-45deg"></i>
+                            <div class="p-title">
+                                <a href="">
+                                    <h1>{{portfolio.title}}</h1>
+                                </a>
+                                <p>{{portfolio.subtitle}}</p>
                             </div>
-                        </div>
-                        <div class="p-title">
-                            <h1>T-Shirt Mocukup</h1>
-                            <p>A beatiful t-shirt backup</p>
-                        </div>
+                        </a>
                     </div>
-                    <div class="portfolio-box">
-                        <div class="img">
-                            <img src="{% static 'img/portfolio-image-1.jpg' %}" alt="">
-                            <div class="icons">
-                                <i class="bi bi-zoom-in"></i>
-                                <i class="bi bi-link-45deg"></i>
-                            </div>
-                        </div>
-                        <div class="p-title">
-                            <h1>T-Shirt Mocukup</h1>
-                            <p>A beatiful t-shirt backup</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-box">
-                        <div class="img">
-                            <img src="{% static 'img/portfolio-image-1.jpg' %}" alt="">
-                            <div class="icons">
-                                <i class="bi bi-zoom-in"></i>
-                                <i class="bi bi-link-45deg"></i>
-                            </div>
-                        </div>
-                        <div class="p-title">
-                            <h1>T-Shirt Mocukup</h1>
-                            <p>A beatiful t-shirt backup</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-box">
-                        <div class="img">
-                            <img src="{% static 'img/portfolio-image-1.jpg' %}" alt="">
-                            <div class="icons">
-                                <i class="bi bi-zoom-in"></i>
-                                <i class="bi bi-link-45deg"></i>
-                            </div>
-                        </div>
-                        <div class="p-title">
-                            <h1>T-Shirt Mocukup</h1>
-                            <p>A beatiful t-shirt backup</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-box">
-                        <div class="img">
-                            <img src="{% static 'img/portfolio-image-1.jpg' %}" alt="">
-                            <div class="icons">
-                                <i class="bi bi-zoom-in"></i>
-                                <i class="bi bi-link-45deg"></i>
-                            </div>
-                        </div>
-                        <div class="p-title">
-                            <h1>T-Shirt Mocukup</h1>
-                            <p>A beatiful t-shirt backup</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
 
 
                 <div class="pagination">
-                    <a href=""><i class="fas fa-chevron-left"></i></a>
-                    <a href="" class="active">1</a>
+                    
+                    {% if page_obj.has_previous  %}
+                    <a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a>
+                    {% endif %}
+                        
+                   <!--<a href="" class="active">1</a>
                     <a href="">2</a>
-                    <a href="">3</a>
-                    <a href=""><i class="fas fa-chevron-right"></i></a>
+                    <a href="">3</a>--> 
+                    {% for page in page_obj.paginator.page_range  %}
+                    
+                    {% if page is page_obj.number %}
+                    <a href="" class="active">{{page}}</a>
+                    {% else %}
+                    <a href="?page={{page}}">{{page}}</a>
+                    {% endif %}
+
+                    {% endfor %}
+                    
+                    
+                    
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
                 </div>
             </div>
         </section>

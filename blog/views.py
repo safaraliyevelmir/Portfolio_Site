@@ -1,39 +1,48 @@
-from datetime import date
+
 from typing import NewType
-from django.http import request
+from django.core.checks import messages
+from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
-
 from .models import Blog, Comment
-from .forms import Comment_Add
+from .forms import CommentForms
+from django.http import HttpResponseRedirect
 # Create your views here.
-
 
 
 def blog(request):
     blogs = Blog.objects.all()
+    paginator = Paginator(blogs,4)
+    page_number = request.GET.get('page')
+    page_obj =paginator.get_page(page_number)
     context = {
         'blog_page': 'active',
-        'blogs':blogs
+        'page_obj':page_obj
     }
     return render(request,'blog.html', context)
 
 def single_blog(request, slug):
     blogs = Blog.objects.get(slug=slug)
-    new_comment = None
+    form = CommentForms(request.POST or None)
     if request.method == 'POST':
-        comment_form = Comment_Add(data=request.POST)
-        if comment_form.is_valid():
-            new_comment = comment_form.save(commit=False)
-            new_comment.post = blog
-            new_comment.save()
-            return redirect('blog')
-    
-    comment_form = Comment_Add()
+        form = CommentForms(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            comment = form.cleaned_data['comment']
+            post_id = blogs.id
+            form = Comment(name=name,email=email,message=comment, post_id=post_id)
+            form.save()
+            print(slug)
+            return redirect('singleblog:slug')
+        
+        else:
+            form = CommentForms()
 
+    
     context = {
         'blog_page': 'active',
         'blogs':blogs,
-        'form': comment_form
+        'form': form
     }
     return render(request,'singleblog.html',context)    
 

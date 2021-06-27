@@ -25,7 +25,6 @@
                             {% for image in images %}
                             <img src="{{image.img.url}}" alt="">
                             {% endfor %}
-                            <!-- <img src="{% static 'img/about-image.jpg' %}" alt=""> -->
                         </div>
                         <div class="info">
                             {% for main_info in main_infos  %}
@@ -42,24 +41,13 @@
                                         <td class="info-2">{{other_info.info}}</td>
                                     </tr>
                                     {% endfor %}
-                                    <!-- <tr>
-                                        <td>Mark</td>
-                                        <td class="info-2">Otto</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mark</td>
-                                        <td class="info-2">Otto</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mark</td>
-                                        <td class="info-2">Otto</td>
-                                    </tr> -->
                                 </tbody>
                             </table>
 
                             <button>
-                                <a href=""></a>
-                                Download CV
+                                {% for cv in cv %}
+                                <a href="{{cv.cv.url}}" style="color: white;">Download CV</a>
+                                {% endfor %}
                             </button>
                         </div>
                     </div>
@@ -81,20 +69,6 @@
                             <p>{{service.subtitle}}</p>
                         </div> 
                         {% endfor %}
-                        <!-- <div class="service-box">
-                            <div class="icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div class="title-service">Back-End</div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem tenetur ratione quod.</p>
-                        </div>
-                        <div class="service-box">
-                            <div class="icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="title-service">Front-End</div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem tenetur ratione quod.</p>
-                        </div> -->
                     </div>
                 </div>
             </div>

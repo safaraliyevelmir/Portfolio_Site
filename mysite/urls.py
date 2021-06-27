@@ -22,12 +22,15 @@ from index.views import index
 from aboutme.views import aboutme
 from blog.views import blog,single_blog
 from contact.views import contact
-from portfolio.views import portfolio
+from portfolio.views import portfolio, portfolio_single
 from resume.views import resume
 
 
 from django.conf import settings
 from django.conf.urls.static import static
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,7 +40,8 @@ urlpatterns = [
     path('about/',aboutme, name='about'),
     path('contact/', contact, name='contact'),
     path('portfolio/', portfolio, name='portfolio'),
-    path('singleblog/<slug>/',single_blog, name='single_blog'),
+    path('singleblog/<slug:slug>/',single_blog, name='single_blog'),
+    path('portfolio/<slug>/',portfolio_single, name='portfolio_single'),
 ]
 
 if settings.DEBUG:

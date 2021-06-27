@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="blog-container">
-                    {% for blog in blogs %}
+                    {% for blog in page_obj %}
                     <div class="blog-box">
                         <a href="{{blog.get_absolute_url}}">
                             <div class="img">
@@ -31,70 +31,34 @@
                         </a>
                     </div>
                     {% endfor %}
-                    <!-- <div class="blog-box">
-                        <a href="">
-                            <div class="img">
-                                <div class="date">20
-                                    <p>Feb</p>
-                                </div>
-                                <img src="{% static 'img/blog-image-1.jpg' %}" alt="">
-                            </div>
-                            <h1>Markdown & Html supported blog.</h1>
-                        </a>
-                    </div>
-                    <div class="blog-box">
-                        <a href="">
-                            <div class="img">
-                                <div class="date">20
-                                    <p>Feb</p>
-                                </div>
-                                <img src="{% static 'img/blog-image-1.jpg' %}" alt="">
-                            </div>
-                            <h1>Markdown & Html supported blog.</h1>
-                        </a>
-                    </div>
-                    <div class="blog-box">
-                        <a href="">
-                            <div class="img">
-                                <div class="date">20
-                                    <p>Feb</p>
-                                </div>
-                                <img src="{% static 'img/blog-image-1.jpg' %}" alt="">
-                            </div>
-                            <h1>Markdown & Html supported blog.</h1>
-                        </a>
-                    </div>
-                    <div class="blog-box">
-                        <a href="">
-                            <div class="img">
-                                <div class="date">20
-                                    <p>Feb</p>
-                                </div>
-                                <img src="{% static 'img/blog-image-1.jpg' %}" alt="">
-                            </div>
-                            <h1>Markdown & Html supported blog.</h1>
-                        </a>
-                    </div>
-                    <div class="blog-box">
-                        <a href="">
-                            <div class="img">
-                                <div class="date">20
-                                    <p>Feb</p>
-                                </div>
-                                <img src="{% static 'img/blog-image-1.jpg' %}" alt="">
-                            </div>
-                            <h1>Markdown & Html supported blog.</h1>
-                        </a>
-                    </div> -->
                 </div>
 
 
                 <div class="pagination">
-                    <a href=""><i class="fas fa-chevron-left"></i></a>
-                    <a href="" class="active">1</a>
+                    
+                    {% if page_obj.has_previous  %}
+                    <a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a>
+                    {% endif %}
+                        
+                   <!--<a href="" class="active">1</a>
                     <a href="">2</a>
-                    <a href="">3</a>
-                    <a href=""><i class="fas fa-chevron-right"></i></a>
+                    <a href="">3</a>--> 
+                    {% for page in page_obj.paginator.page_range  %}
+                    
+                    {% if page is page_obj.number %}
+                    <a href="" class="active">{{page}}</a>
+                    {% else %}
+                    <a href="?page={{page}}">{{page}}</a>
+                    {% endif %}
+
+                    {% endfor %}
+                    
+                    
+                    
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
                 </div>
             </div>
         </section>

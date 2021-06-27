@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'portfolio',
     'contact',
     'resume',
     'ckeditor_uploader',

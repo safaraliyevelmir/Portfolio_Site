@@ -9,11 +9,14 @@ def aboutme(request):
     main_infos = Main_Info.objects.all()
     services = Services.objects.all()
     images = Image.objects.all()
+    cv = Cv.objects.all()
     context = {
         'other_infos': other_infos,
         'main_infos': main_infos,
         'about_page':'active',
         'services': services,
         'images': images,
+        'cv':cv,
     }
     return render(request, 'aboutme.html', context)
+
