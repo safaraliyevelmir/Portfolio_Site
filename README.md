@@ -1,1 +1,0 @@
-# safaraliyev.github.io
