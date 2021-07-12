@@ -1,6 +1,6 @@
 from django import forms
 from django.forms.fields import CharField, EmailField
-from django.forms.widgets import Textarea
+from django.forms.widgets import TextInput, Textarea
 
 class CommentForms(forms.Form):
     name = CharField(max_length=30)
