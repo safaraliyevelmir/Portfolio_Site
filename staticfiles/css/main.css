@@ -144,8 +144,12 @@ main{
     height: 100vh;
 }
 
-main .content{
+main.main .content{
     margin-left: 260px;
+}
+
+main .content{
+    margin-left: 270px;
 }
 
 /* Main End */

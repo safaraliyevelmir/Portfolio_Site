@@ -7,32 +7,15 @@ from django.urls import reverse
 import datetime
 
 
-def gen_slug(slug):
-    return slugify(slug,allow_unicode=False) 
 
 
 # Create your models here.
 
 class Blog(models.Model):
     title = CharField(max_length=30)
-    slug = SlugField(max_length=50, null=True, blank=True)
+    slug = CharField(max_length=300)
     img = ImageField(upload_to='images')
-    text = RichTextField()
     date = DateField(auto_now_add=True)
-
-
-    def save(self,*args,**kwargs):
-        if not self.slug:
-            self.slug = gen_slug(self.title)
-
-        super().save(*args,**kwargs)
-
-
-    def get_absolute_url(self):
-        return reverse("single_blog", kwargs={"slug": self.slug})
-    
-
-
 
 
 

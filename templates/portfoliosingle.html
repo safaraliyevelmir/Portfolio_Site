@@ -25,17 +25,12 @@
                     <div class="blog_content">
                         <p>{{portfolio.text|safe}}</p>
 
-                        <blockquote>
-                            Inventore tempora deleniti repellendus doloribus necessitatibus ullam accusantium
-                            iste natus assumenda nisi ut eius commodi quis tenetur fugit consequatur earum
-                            debitis mollitia repellat.
-                        </blockquote>
                     </div>
 
 
                     <div class="comment">
                         <div class="info">
-                            <div class="comment-count">{{blogs.post_comment.all|length}}</div>
+                            <div class="comment-count">{{portfolio.portfolio_comment.all|length}}</div>
                         </div>
 
                         <div class="write_comment">
@@ -65,7 +60,7 @@
                         </div>
 
                         <div class="comments">
-                            {% for x in blogs.post_comment.all %}
+                            {% for x in portfolio.portfolio_comment.all %}
                             <div class="comment-a">
                                 <div class="img">
                                     <img src="{% static 'img/noavatar92.png' %}" alt="">

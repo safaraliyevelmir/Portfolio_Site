@@ -21,7 +21,7 @@
                 <div class="blog-container">
                     {% for blog in page_obj %}
                     <div class="blog-box">
-                        <a href="{{blog.get_absolute_url}}">
+                        <a href="{{blog.slug}}">
                             <div class="img">
                                 <div class="date">{{blog.date |date:"d"}}<p>{{blog.date |date:"M"}}</p>
                                 </div>
