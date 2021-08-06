@@ -9,7 +9,7 @@ from django.urls import reverse
 
 def portfolio(request):
     portfolios = Portfolio.objects.all()
-    paginator = Paginator(portfolios,4)
+    paginator = Paginator(portfolios,6)
     page_number = request.GET.get('page')
     page_obj =paginator.get_page(page_number)
     context = {

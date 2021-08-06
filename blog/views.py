@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 
 def blog(request):
     blogs = Blog.objects.all()
-    paginator = Paginator(blogs,4)
+    paginator = Paginator(blogs,6)
     page_number = request.GET.get('page')
     page_obj =paginator.get_page(page_number)
     context = {
