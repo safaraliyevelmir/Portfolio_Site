@@ -23,7 +23,8 @@
 
                     <div class="form">
                         <div class="form-title">Get In Touch</div>
-                        <form method="POST">{% csrf_token %}
+                        <form method="POST">
+                            {% csrf_token %}
                             <div class="form-input">
                                 <label for="">Enter your name*</label>
                                 <!-- <input type="text"> -->
@@ -42,7 +43,7 @@
                             <div class="form-input">
                                 <label for="">Enter your message*</label>
                                 <!-- <textarea name="" id="" cols="30" rows="6"></textarea> -->
-                                {{form.message}}
+                                {{form.text}}
                             </div>
 
                             <div class="form-input">
